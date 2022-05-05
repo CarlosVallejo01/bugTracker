@@ -13,6 +13,8 @@ function App() {
   useEffect(() => {
     const getTasks = async () =>{
       const tasksFromServer = await fetchTasks()
+      console.log("PEPEPEPEPEP");
+      console.log(tasksFromServer);
       setTasks(tasksFromServer)
     }
     getTasks()
@@ -20,18 +22,23 @@ function App() {
 
   //Fetch Tasks
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks')
+    console.log("hola: aiios");
+    const res = await fetch('http://127.0.0.1:8000/dbhandler/reports')
+    console.log("hola: amiiasisi");
     const data = await res.json()
+    
     
     return data;
   }
 
 //Add task
 const addTask = async (task) => {
-  const res = await fetch("http://localhost:5000/tasks", {
+  console.log(task);
+  const res = await fetch("http://127.0.0.1:8000/dbhandler/add_report", {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
+      'Access-Control-Allow-Headers': '*'
     },
     body: JSON.stringify(task)
   })
@@ -49,7 +56,7 @@ const addTask = async (task) => {
 
 //delete task
 const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    await fetch(`http://127.0.0.1:8000/dbhandler/reports${id}`, {
       method: 'DELETE'
     })
     setTasks(tasks.filter((task) => task.id !== id))

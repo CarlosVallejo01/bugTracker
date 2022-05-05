@@ -1,3 +1,11 @@
 {
-  "tasks": []
+  "tasks": [
+    {
+      "text": "Bug",
+      "description": "Bug",
+      "author": "Carlos",
+      "reminder": false,
+      "id": 1
+    }
+  ]
 }
